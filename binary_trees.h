@@ -7,6 +7,9 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <string.h>
+#include <limits.h>
+#include <stdbool.h>
 
 /* Data structures */
 
@@ -81,11 +84,15 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 
 /* Author Prototypes */
 
+bst_t *bst_tsearch(bst_t *root);
 size_t depth(const binary_tree_t *tree);
+bst_t *bst_remove(bst_t *root, int value);
+bst_t *bst_delete(bst_t *root, bst_t *node);
 void binary_tree_print(const binary_tree_t *);
 int is_full_recursive(const binary_tree_t *tree);
 unsigned char is_leaf(const binary_tree_t *node);
 const binary_tree_t *get_leaf(const binary_tree_t *tree);
+bst_t *bst_reoccurs(bst_t *root, bst_t *node, int value);
 int binary_bst(const binary_tree_t *tree, int sm, int la);
 void binary_level(const binary_tree_t *tree, size_t level, void (*func)(int));
 int is_perfect_recursive(const binary_tree_t *tree, size_t leaf_depth,
