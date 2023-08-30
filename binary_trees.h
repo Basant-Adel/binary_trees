@@ -86,6 +86,7 @@ void binary_tree_print(const binary_tree_t *);
 int is_full_recursive(const binary_tree_t *tree);
 unsigned char is_leaf(const binary_tree_t *node);
 const binary_tree_t *get_leaf(const binary_tree_t *tree);
+int binary_bst(const binary_tree_t *tree, int sm, int la);
 void binary_level(const binary_tree_t *tree, size_t level, void (*func)(int));
 int is_perfect_recursive(const binary_tree_t *tree, size_t leaf_depth,
 		size_t level);
