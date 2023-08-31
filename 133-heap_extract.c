@@ -11,28 +11,28 @@
 	size = binary_tree_size(*root); \
 	binary = &buffer[49]; \
 	*binary = 0; \
-}
+	}
 
 #define FREE_NODE_BLOC { \
-	res = tmp->n; \
-	free(tmp); \
-	*root = NULL; \
-}
+		res = tmp->n; \
+		free(tmp); \
+		*root = NULL; \
+	}
 
 #define SWAP_HEAD_BLOC { \
-	head = *root; \
-	head = swap_head(head, tmp); \
-	res = head->n; \
-	free(head); \
-	*root = tmp; \
-	tmp = percy_down(tmp); \
-	*root = tmp; \
-}
+		head = *root; \
+		head = swap_head(head, tmp); \
+		res = head->n; \
+		free(head); \
+		*root = tmp; \
+		tmp = percy_down(tmp); \
+		*root = tmp; \
+	}
 
 #define CONVERT_LOOP { \
-	*--binary = CONVERT[size % 2]; \
-	size /= 2; \
-}
+		*--binary = CONVERT[size % 2]; \
+		size /= 2; \
+	}
 
 /**
  * heap_extract -> Write a function to extract root node of Max Binary Heap
