@@ -14,6 +14,36 @@
 
 #define INIT_NODE {0, NULL, NULL, NULL}
 
+#define CONVERT "0123456789ABCDEF"
+
+#define SETUP_NODE_BLOC { \
+	tmp = *root; \
+	size = binary_tree_size(*root); \
+	binary = &buffer[49]; \
+	*binary = 0; \
+	}
+
+#define FREE_NODE_BLOC { \
+		res = tmp->n; \
+		free(tmp); \
+		*root = NULL; \
+	}
+
+#define SWAP_HEAD_BLOC { \
+		head = *root; \
+		head = swap_head(head, tmp); \
+		res = head->n; \
+		free(head); \
+		*root = tmp; \
+		tmp = percy(tmp); \
+		*root = tmp; \
+	}
+
+#define CONVERT_LOOP { \
+		*--binary = CONVERT[size % 2]; \
+		size /= 2; \
+	}
+
 
 /* Data structures */
 
@@ -89,6 +119,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 /* Author Prototypes */
 
 void bal(avl_t **tree);
+heap_t *percy(heap_t *node);
 bst_t *swap(bst_t *f, bst_t *s);
 bst_t *bst_tsearch(bst_t *root);
 int balance(const binary_tree_t *tree);
@@ -101,6 +132,7 @@ bst_t *bst_delete(bst_t *root, bst_t *node);
 int check_parent(const binary_tree_t *tree);
 int binary_is_com(const binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *);
+heap_t *swap_head(heap_t *head, heap_t *node);
 int is_full_recursive(const binary_tree_t *tree);
 unsigned char is_leaf(const binary_tree_t *node);
 int is_avl(const binary_tree_t *tree, int sm, int la);
