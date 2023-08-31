@@ -89,10 +89,13 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 /* Author Prototypes */
 
 void bal(avl_t **tree);
+bst_t *swap(bst_t *f, bst_t *s);
 bst_t *bst_tsearch(bst_t *root);
 int balance(const binary_tree_t *tree);
 size_t depth(const binary_tree_t *tree);
 size_t height(const binary_tree_t *tree);
+void insert(heap_t **root, heap_t *node);
+void insert(heap_t **root, heap_t *node);
 bst_t *bst_remove(bst_t *root, int value);
 bst_t *bst_delete(bst_t *root, bst_t *node);
 int check_parent(const binary_tree_t *tree);
@@ -105,6 +108,7 @@ int is_com(const binary_tree_t *tree, int n, int num);
 const binary_tree_t *get_leaf(const binary_tree_t *tree);
 bst_t *bst_reoccurs(bst_t *root, bst_t *node, int value);
 int binary_bst(const binary_tree_t *tree, int sm, int la);
+char *convert(unsigned long int num, int base, int lowercase);
 avl_t *sorted_avl(int *array, int start, int end, avl_t *parent);
 avl_t *avl_value(avl_t **tree, avl_t *parent, avl_t **new, int value);
 void binary_level(const binary_tree_t *tree, size_t level, void (*func)(int));
