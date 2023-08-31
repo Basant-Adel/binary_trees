@@ -91,6 +91,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 void bal(avl_t **tree);
 bst_t *swap(bst_t *f, bst_t *s);
 bst_t *bst_tsearch(bst_t *root);
+bst_t *nswap(bst_t *f, bst_t *s);
 heap_t *percy_down(heap_t *node);
 int balance(const binary_tree_t *tree);
 size_t depth(const binary_tree_t *tree);
@@ -105,6 +106,7 @@ void binary_tree_print(const binary_tree_t *);
 heap_t *swap_head(heap_t *head, heap_t *node);
 int is_full_recursive(const binary_tree_t *tree);
 unsigned char is_leaf(const binary_tree_t *node);
+size_t binary_tre_size(const binary_tree_t *tree);
 int is_avl(const binary_tree_t *tree, int sm, int la);
 int is_com(const binary_tree_t *tree, int n, int num);
 const binary_tree_t *get_leaf(const binary_tree_t *tree);

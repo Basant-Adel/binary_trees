@@ -4,11 +4,13 @@
 
 #define INIT_NODE {0, NULL, NULL, NULL}
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
 #define CONVERT "0123456789ABCDEF"
 
 #define SETUP_NODE_BLOC { \
 	tmp = *root; \
-	size = binary_tree_size(*root); \
+	size = binary_tre_size(*root); \
 	binary = &buffer[49]; \
 	*binary = 0; \
 	}
@@ -84,13 +86,13 @@ int heap_extract(heap_t **root)
 }
 
 /**
- * swap -> Write a function to swap 2 nodes in binary tree
+ * nswap -> Write a function to swap 2 nodes in binary tree
  *@f: It's a first node
  *@s: It's a second node
  *Return: A pointer to root
  */
 
-bst_t *swap(bst_t *f, bst_t *s)
+bst_t *nswap(bst_t *f, bst_t *s)
 {
 	bst_t a_copy = INIT_NODE;
 
@@ -133,12 +135,12 @@ bst_t *swap(bst_t *f, bst_t *s)
 }
 
 /**
- * binary_tree_size -> Write a function that measures size of a binary tree
+ * binary_tre_size -> Write a function that measures size of a binary tree
  *@tree: It's a binary tree
  *Return: An number of descendant child
  */
 
-size_t binary_tree_size(const binary_tree_t *tree)
+size_t binary_tre_size(const binary_tree_t *tree)
 {
 
 	if (!tree)
@@ -146,7 +148,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
 
 		return (0);
 
-	}	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
+	}	return (1 + binary_tre_size(tree->left) + binary_tre_size(tree->right));
 
 }
 
@@ -218,7 +220,7 @@ heap_t *percy_down(heap_t *node)
 	if (next != node)
 	{
 
-		swap(node, next);
+		nswap(node, next);
 		percy_down(node);
 
 	}	return (next);
