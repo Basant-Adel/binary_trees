@@ -13,10 +13,10 @@ heap_t *heap_insert(heap_t **root, int value)
 	heap_t *he = NULL, *ro;
 
 	if (!root)
-  {
+	{
 		return (NULL);
 
-  }	he = calloc(1, sizeof(heap_t));
+	}	he = calloc(1, sizeof(heap_t));
 	he->n = value;
 
 	if (!*root)
@@ -31,9 +31,9 @@ heap_t *heap_insert(heap_t **root, int value)
 		ro = swap(he->parent, he);
 
 		if (ro)
-    {
+		{
 			*root = ro;
-    }
+		}
 
 	}	return (he);
 
@@ -60,7 +60,7 @@ bst_t *swap(bst_t *f, bst_t *s)
 	if (s->left)
 		s->left->parent = f;
 	if (s->right)
-  {
+	{
 		s->right->parent = f;  }
 	s->parent = a_c.parent;
 
@@ -129,11 +129,11 @@ size_t binary_tree_size(const binary_tree_t *tree)
 {
 
 	if (!tree)
-  {
+	{
 
 		return (0);
 
-  }	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
+	}	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
 
 }
 
@@ -161,7 +161,7 @@ void insert(heap_t **root, heap_t *node)
 		b = binary[a];
 		if (a == strlen(binary) - 1)
 		{
-      if (b == '1')
+			if (b == '1')
 			{
 				node->parent = item;
 				item->right = node;

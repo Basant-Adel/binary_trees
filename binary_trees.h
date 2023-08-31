@@ -11,6 +11,10 @@
 #include <limits.h>
 #include <stdbool.h>
 
+
+#define INIT_NODE {0, NULL, NULL, NULL}
+
+
 /* Data structures */
 
 /**
