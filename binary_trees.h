@@ -85,6 +85,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 /* Author Prototypes */
 
 bst_t *bst_tsearch(bst_t *root);
+int balance(const binary_tree_t *tree);
 size_t depth(const binary_tree_t *tree);
 size_t height(const binary_tree_t *tree);
 bst_t *bst_remove(bst_t *root, int value);
@@ -96,6 +97,7 @@ int is_avl(const binary_tree_t *tree, int sm, int la);
 const binary_tree_t *get_leaf(const binary_tree_t *tree);
 bst_t *bst_reoccurs(bst_t *root, bst_t *node, int value);
 int binary_bst(const binary_tree_t *tree, int sm, int la);
+avl_t *avl_value(avl_t **tree, avl_t *parent, avl_t **new, int value);
 void binary_level(const binary_tree_t *tree, size_t level, void (*func)(int));
 int is_perfect_recursive(const binary_tree_t *tree, size_t leaf_depth,
 		size_t level);
