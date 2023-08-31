@@ -89,9 +89,9 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 /* Author Prototypes */
 
 void bal(avl_t **tree);
-heap_t *percy(heap_t *node);
 bst_t *swap(bst_t *f, bst_t *s);
 bst_t *bst_tsearch(bst_t *root);
+heap_t *percy_down(heap_t *node);
 int balance(const binary_tree_t *tree);
 size_t depth(const binary_tree_t *tree);
 size_t height(const binary_tree_t *tree);

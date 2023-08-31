@@ -1,5 +1,7 @@
 #include "binary_trees.h"
 
+/* HELPER DEFINE */
+
 #define INIT_NODE {0, NULL, NULL, NULL}
 
 #define CONVERT "0123456789ABCDEF"
@@ -9,28 +11,28 @@
 	size = binary_tree_size(*root); \
 	binary = &buffer[49]; \
 	*binary = 0; \
-	}
+}
 
 #define FREE_NODE_BLOC { \
-		res = tmp->n; \
-		free(tmp); \
-		*root = NULL; \
-	}
+	res = tmp->n; \
+	free(tmp); \
+	*root = NULL; \
+}
 
 #define SWAP_HEAD_BLOC { \
-		head = *root; \
-		head = swap_head(head, tmp); \
-		res = head->n; \
-		free(head); \
-		*root = tmp; \
-		tmp = percy(tmp); \
-		*root = tmp; \
-	}
+	head = *root; \
+	head = swap_head(head, tmp); \
+	res = head->n; \
+	free(head); \
+	*root = tmp; \
+	tmp = percy_down(tmp); \
+	*root = tmp; \
+}
 
 #define CONVERT_LOOP { \
-		*--binary = CONVERT[size % 2]; \
-		size /= 2; \
-	}
+	*--binary = CONVERT[size % 2]; \
+	size /= 2; \
+}
 
 /**
  * heap_extract -> Write a function to extract root node of Max Binary Heap
@@ -40,8 +42,8 @@
 
 int heap_extract(heap_t **root)
 {
-	size_t size, x;
-	char *binary, y, buffer[50];
+	size_t size, i;
+	char *binary, c, buffer[50];
 	int res;
 	heap_t *tmp, *head;
 
@@ -49,7 +51,6 @@ int heap_extract(heap_t **root)
 	{
 		return (0);
 	}	SETUP_NODE_BLOC;
-
 	if (size == 1)
 	{
 		FREE_NODE_BLOC;
@@ -57,24 +58,26 @@ int heap_extract(heap_t **root)
 	do {
 		CONVERT_LOOP;
 	} while (size);
-
-	for (x = 1; x < strlen(binary); x++)
+	for (i = 1; i < strlen(binary); i++)
 	{
-		y = binary[x];
-		if (x == strlen(binary) - 1)
+		c = binary[i];
+		if (i == strlen(binary) - 1)
 		{
-			if (y == '1')
+			if (c == '1')
 			{
 				tmp = tmp->right;
-				break;			}
-			else if (y == '0')
+				break;
+			}
+			else if (c == '0')
 			{
 				tmp = tmp->left;
 				break;			}
 		}
-		if (y == '1')
+		if (c == '1')
+		{
 			tmp = tmp->right;
-		else if (y == '0')
+		}
+		else if (c == '0')
 			tmp = tmp->left;
 	}	SWAP_HEAD_BLOC;
 	return (res);
@@ -108,8 +111,7 @@ bst_t *swap(bst_t *f, bst_t *s)
 		if (f == a_copy.parent->left)
 			a_copy.parent->left = s;
 		else
-			a_copy.parent->right = s;
-	}
+			a_copy.parent->right = s;	}
 	if (s == a_copy.left)
 	{
 		s->left = f;
@@ -127,7 +129,7 @@ bst_t *swap(bst_t *f, bst_t *s)
 	while (s->parent)
 	{
 		s = s->parent;
-	}  return (s);
+	}	return (s);
 }
 
 /**
@@ -160,10 +162,10 @@ heap_t *swap_head(heap_t *head, heap_t *node)
 
 	if (node->parent->left == node)
 	{
-		node->parent->left = NULL;
-	}
 
-	else
+		node->parent->left = NULL;
+
+	} else
 	{
 
 		node->parent->right = NULL;
@@ -173,11 +175,7 @@ heap_t *swap_head(heap_t *head, heap_t *node)
 	node->right = head->right;
 
 	if (head->left)
-	{
-
 		head->left->parent = node;
-
-	}
 
 	if (head->right)
 	{
@@ -189,41 +187,39 @@ heap_t *swap_head(heap_t *head, heap_t *node)
 }
 
 /**
- * percy -> Write a function to percolate head into correct position
+ * percy_down -> Write a function to percolate head into correct position
  *@node: It's a pointer to head of node
  *Return: A pointer of node
  */
 
-heap_t *percy(heap_t *node)
+heap_t *percy_down(heap_t *node)
 {
-	int maxx;
+	int max;
 	heap_t *next = node;
 
 	if (!node)
 	{
-
 		return (NULL);
 
-	}	maxx = node->n;
+	}	max = node->n;
 
 	if (node->left)
-	{
-		maxx = MAX(node->left->n, maxx);
-	}
+		max = MAX(node->left->n, max);
 
 	if (node->right)
-		maxx = MAX(node->right->n, maxx);
+		max = MAX(node->right->n, max);
 
-	if (node->left && maxx == node->left->n)
+	if (node->left && max == node->left->n)
 		next = node->left;
 
-	else if (node->right && maxx == node->right->n)
+	else if (node->right && max == node->right->n)
 		next = node->right;
 
 	if (next != node)
 	{
+
 		swap(node, next);
-		percy(node);
+		percy_down(node);
 
 	}	return (next);
 }
