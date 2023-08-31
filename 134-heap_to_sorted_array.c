@@ -20,7 +20,7 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 
 		return (NULL);
 
-	}	heaps = binary_tree_size(heap);
+	}	heaps = binary_tre_size(heap);
 	*size = heaps;
 
 	arr = malloc(heaps * sizeof(int));
