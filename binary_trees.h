@@ -112,6 +112,7 @@ bst_t *bst_reoccurs(bst_t *root, bst_t *node, int value);
 int binary_bst(const binary_tree_t *tree, int sm, int la);
 char *convert(unsigned long int num, int base, int lowercase);
 avl_t *sorted_avl(int *array, int start, int end, avl_t *parent);
+int tree_is_complete(const binary_tree_t *tree, int i, int inodes);
 avl_t *avl_value(avl_t **tree, avl_t *parent, avl_t **new, int value);
 void binary_level(const binary_tree_t *tree, size_t level, void (*func)(int));
 int is_perfect_recursive(const binary_tree_t *tree, size_t leaf_depth,

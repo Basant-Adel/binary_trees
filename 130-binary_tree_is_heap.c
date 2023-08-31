@@ -11,7 +11,7 @@
 int binary_tree_is_heap(const binary_tree_t *tree)
 {
 
-	if (!binary_is_com(tree))
+	if (!binary_tree_is_complete(tree))
 	{
 
 		return (0);
@@ -34,50 +34,57 @@ size_t binary_tree_size(const binary_tree_t *tree)
 
 		return (0);
 
-	}	return (binary_tree_size(tree->left) + binary_tree_size(tree->right + 1));
+	}	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 
 }
 
 /**
- * is_com -> Write a function to check if tree is complete
+ * tree_is_complete -> Write a function to check if tree is complete
  *@tree: It's a pointer to tree root
- *@n: It's a node
- *@num: It's a number of nodes
+ *@i: It's a node
+ *@inodes: It's a number of nodes
  *Return: (1) -> (tree) = (complete), (0) -> otherwise
  */
 
-int is_com(const binary_tree_t *tree, int n, int num)
+int tree_is_complete(const binary_tree_t *tree, int i, int inodes)
 {
 
 	if (tree == NULL)
+	{
 
 		return (1);
 
-	if (n >= num)
+	}
+
+	if (i >= inodes)
 	{
 
 		return (0);
 
-	}	return (is_com(tree->left, (2 * n) + 1, num) &&
-			is_com(tree->right, (2 * n) + 2, num));
+	}	return (tree_is_complete(tree->left, (2 * i) + 1, inodes) &&
+		tree_is_complete(tree->right, (2 * i) + 2, inodes));
 
 }
 
+
 /**
- * binary_is_com -> Write a function to call is_com
+ * binary_tree_is_complete -> Write a function to call is_com
  *@tree: It's a pointer to tree root
  *Return: (1) -> (tree) = (complete), (0) -> otherwise
  */
 
-int binary_is_com(const binary_tree_t *tree)
+int binary_tree_is_complete(const binary_tree_t *tree)
 {
+
+	size_t inodes;
 
 	if (tree == NULL)
 	{
 
 		return (0);
 
-	}	return (is_com(tree, 0, binary_tree_size(tree)));
+	}	inodes = binary_tree_size(tree);
+	return (tree_is_complete(tree, 0, inodes));
 
 }
 
@@ -92,9 +99,7 @@ int check_parent(const binary_tree_t *tree)
 
 	if (tree == NULL)
 	{
-
 		return (1);
-
 	}
 
 	if (tree->n > tree->parent->n)
