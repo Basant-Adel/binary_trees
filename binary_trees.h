@@ -1,7 +1,9 @@
 #ifndef BINARY_TREES_H
 #define BINARY_TREES_H
 
+
 /* The C Standard Library */
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,6 +18,7 @@
 
 
 /* Data structures */
+
 
 /**
  * struct binary_tree_s -> Binary tree node
@@ -38,9 +41,12 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
+
 /* All Prototypes */
 
+
 /* Mandatory Prototypes */
+
 
 void binary_tree_delete(binary_tree_t *tree);
 int binary_tree_is_leaf(const binary_tree_t *node);
@@ -62,7 +68,9 @@ void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
 
+
 /* Advanced Prototypes */
+
 
 int heap_extract(heap_t **root);
 bst_t *bst_remove(bst_t *root, int value);
@@ -86,7 +94,9 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		const binary_tree_t *second);
 
+
 /* Author Prototypes */
+
 
 void bal(avl_t **tree);
 bst_t *swap(bst_t *f, bst_t *s);
